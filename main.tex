@@ -1,0 +1,109 @@
+\documentclass[10pt]{extarticle}
+\usepackage{utils}
+
+\addbibresource{bibliography}
+
+\title{\huge\bfseries Exercise For Convexity and Optimization in $\mathbb{R}^n$}
+\author{\Large Qiuyi Chen\\
+Qiuyi.Chen@liverpool.ac.uk}
+
+\date{\calligra{May, 2025}}
+
+\begin{document}
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+\maketitle
+
+\begin{tcolorbox}[title=Contents, fonttitle=\huge\sffamily\bfseries\selectfont,interior style={left color=contcol1!40!white,right color=contcol2!40!white},frame style={left color=contcol1!80!white,right color=contcol2!80!white},coltitle=black,top=2mm,bottom=2mm,left=2mm,right=2mm,drop fuzzy shadow,enhanced,breakable]
+    \makeatletter
+    \@starttoc{toc}
+    \makeatother
+\end{tcolorbox}
+
+\vspace*{10mm}
+
+\clearpage
+\vspace*{\fill}
+\begin{center}
+    Dedicated to the knee scrapes, playdates, and heartaches.
+\end{center}
+
+\vspace*{\fill}
+\clearpage
+\section{Topics in Real Analysis}
+
+\begin{exercise}[1.1]
+    For any vectors $\bf{x}$ and $\bf{y}$ in $\mathbb{R}^n$, show that ${\Vert \bf{x} + \bf{y} \Vert}^2 +{\Vert \bf{x} - \bf{y} \Vert}^2 = 2{\Vert \bf{x} \Vert}^2 + 2{\Vert \bf{y} \Vert}^2$. Interpret this relation as a statement about parallelograms in $\mathbb{R}^2$ and $\mathbb{R}^3$.
+\end{exercise}
+
+\begin{solution}
+    To prove that $\Vert\mathbf{x} + \mathbf{y}\Vert^2 + \Vert\mathbf{x} - \mathbf{y}\Vert^2 = 2\Vert\mathbf{x}\Vert^2 + 2\Vert\mathbf{y}\Vert^2$ for any vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$, we use the definition of the Euclidean norm and properties of the dot product. Recall that $\Vert\mathbf{x}\Vert^2 = \mathbf{x} \cdot \mathbf{x}$.
+
+    First, expand $\Vert\mathbf{x} + \mathbf{y}\Vert^2$:
+    $$
+        \Vert\mathbf{x} + \mathbf{y}\Vert^2 = (\mathbf{x} + \mathbf{y}) \cdot (\mathbf{x} + \mathbf{y}) = \mathbf{x} \cdot \mathbf{x} + 2\mathbf{x} \cdot \mathbf{y} + \mathbf{y} \cdot \mathbf{y} = \Vert\mathbf{x}\Vert^2 + 2(\mathbf{x} \cdot \mathbf{y}) + \Vert\mathbf{y}\Vert^2.
+    $$
+
+    Next, expand $\Vert\mathbf{x} - \mathbf{y}\Vert^2$:
+    $$
+        \Vert\mathbf{x} - \mathbf{y}\Vert^2 = (\mathbf{x} - \mathbf{y}) \cdot (\mathbf{x} - \mathbf{y}) = \mathbf{x} \cdot \mathbf{x} - 2\mathbf{x} \cdot \mathbf{y} + \mathbf{y} \cdot \mathbf{y} = \Vert\mathbf{x}\Vert^2 - 2(\mathbf{x} \cdot \mathbf{y}) + \Vert\mathbf{y}\Vert^2.
+    $$
+
+    Add these two expressions:
+    $$
+        \Vert\mathbf{x} + \mathbf{y}\Vert^2 + \Vert\mathbf{x} - \mathbf{y}\Vert^2 = \left( \Vert\mathbf{x}\Vert^2 + 2(\mathbf{x} \cdot \mathbf{y}) + \Vert\mathbf{y}\Vert^2 \right) + \left( \Vert\mathbf{x}\Vert^2 - 2(\mathbf{x} \cdot \mathbf{y}) + \Vert\mathbf{y}\Vert^2 \right) = \Vert\mathbf{x}\Vert^2 + \Vert\mathbf{x}\Vert^2 + \Vert\mathbf{y}\Vert^2 + \Vert\mathbf{y}\Vert^2 + 2(\mathbf{x} \cdot \mathbf{y}) - 2(\mathbf{x} \cdot \mathbf{y}).
+    $$
+
+    The cross terms $2(\mathbf{x} \cdot \mathbf{y})$ and $-2(\mathbf{x} \cdot \mathbf{y})$ cancel, yielding:
+    $$
+        \Vert\mathbf{x} + \mathbf{y}\Vert^2 + \Vert\mathbf{x} - \mathbf{y}\Vert^2 = 2\Vert\mathbf{x}\Vert^2 + 2\Vert\mathbf{y}\Vert^2.
+    $$
+
+    Thus, the equality holds for all $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$.
+
+    \medskip
+
+    In $\mathbb{R}^2$ and $\mathbb{R}^3$, this equality has a geometric interpretation related to parallelograms. Consider vectors $\mathbf{x}$ and $\mathbf{y}$ emanating from the same initial point. These vectors form two adjacent sides of a parallelogram. The vector $\mathbf{x} + \mathbf{y}$ represents one diagonal of the parallelogram, and $\mathbf{x} - \mathbf{y}$ represents the other diagonal (assuming the parallelogram is completed appropriately).
+
+    The left side of the equality, $\Vert\mathbf{x} + \mathbf{y}\Vert^2 + \Vert\mathbf{x} - \mathbf{y}\Vert^2$, is the sum of the squares of the lengths of the two diagonals. The right side, $2\Vert\mathbf{x}\Vert^2 + 2\Vert\mathbf{y}\Vert^2$, is twice the sum of the squares of the lengths of the two adjacent sides. Since a parallelogram has two pairs of equal sides, the sum of the squares of the lengths of all four sides is $2\Vert\mathbf{x}\Vert^2 + 2\Vert\mathbf{y}\Vert^2$ (two sides of length $\Vert\mathbf{x}\Vert$ and two of length $\Vert\mathbf{y}\Vert$).
+
+    Therefore, the equality states that for any parallelogram in $\mathbb{R}^2$ or $\mathbb{R}^3$, the sum of the squares of the lengths of the diagonals equals the sum of the squares of the lengths of all four sides. This is a fundamental property of parallelograms in Euclidean geometry, often called the parallelogram law.
+\end{solution}
+
+\begin{exercise}[4.1]
+    Use the properties of the norm to show that the function $d$ defined by
+    $$
+        d(\mathbf{x}, \mathbf{y}) = \Vert \mathbf{x} - \mathbf{y} \Vert = \left(\sum_{i=1}^{n}(x_i - y_i)^2\right)^{1/2}
+    $$
+    is a metric, or distance function, on $\mathbb{R}^n$.
+\end{exercise}
+
+\begin{proof}
+    To verify that $d(\mathbf{x}, \mathbf{y}) = \Vert \mathbf{x} - \mathbf{y} \Vert$ is a metric on $\mathbb{R}^n$, we must show that it satisfies the following three properties for all $\mathbf{x}, \mathbf{y}, \mathbf{z} \in \mathbb{R}^n$:
+    \emph{(i)} non--negativity with the identity of indiscernibles, \emph{(ii)} symmetry, and \emph{(iii)} the triangle inequality.
+
+    \medskip
+    \textbf{1.~Non--negativity and identity of indiscernibles.} The Euclidean norm is always non--negative, so
+    $$
+        d(\mathbf{x}, \mathbf{y}) = \Vert \mathbf{x} - \mathbf{y} \Vert \ge 0.
+    $$
+    Moreover, $d(\mathbf{x}, \mathbf{y}) = 0$ if and only if $\Vert \mathbf{x} - \mathbf{y} \Vert = 0$, which occurs precisely when $\mathbf{x} - \mathbf{y} = \mathbf{0}$, i.e.~when $\mathbf{x} = \mathbf{y}$.
+
+    \medskip
+    \textbf{2.~Symmetry.} Because $\Vert \mathbf{v} \Vert = \Vert -\mathbf{v} \Vert$ for any vector $\mathbf{v}$,
+    $$
+        d(\mathbf{x}, \mathbf{y}) = \Vert \mathbf{x} - \mathbf{y} \Vert = \Vert -(\mathbf{x} - \mathbf{y}) \Vert = \Vert \mathbf{y} - \mathbf{x} \Vert = d(\mathbf{y}, \mathbf{x}).
+    $$
+
+    \medskip
+    \textbf{3.~Triangle inequality.} The Euclidean norm satisfies the triangle inequality $\Vert \mathbf{u} + \mathbf{v} \Vert \le \Vert \mathbf{u} \Vert + \Vert \mathbf{v} \Vert$. Choosing $\mathbf{u} = \mathbf{x} - \mathbf{y}$ and $\mathbf{v} = \mathbf{y} - \mathbf{z}$ gives
+    $$
+        d(\mathbf{x}, \mathbf{z}) = \Vert \mathbf{x} - \mathbf{z} \Vert = \Vert (\mathbf{x} - \mathbf{y}) + (\mathbf{y} - \mathbf{z}) \Vert \le \Vert \mathbf{x} - \mathbf{y} \Vert + \Vert \mathbf{y} - \mathbf{z} \Vert = d(\mathbf{x}, \mathbf{y}) + d(\mathbf{y}, \mathbf{z}).
+    $$
+
+    Since all three axioms hold, the function $d$ is indeed a metric on $\mathbb{R}^n$.
+\end{proof}
+
+\end{document}
