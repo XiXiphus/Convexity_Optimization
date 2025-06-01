@@ -196,7 +196,8 @@
 \theoremstyle{mystyle}{\newtheorem{definition}{Definition}[section]}
 \theoremstyle{mystyle}{\newtheorem{proposition}[definition]{Proposition}}
 \theoremstyle{mystyle}{\newtheorem{theorem}[definition]{Theorem}}
-\theoremstyle{mystyle}{\newtheorem{lemma}[definition]{Lemma}}
+\theoremstyle{exstyle}
+\newtheorem*{lemma}{Lemma}
 \theoremstyle{mystyle}{\newtheorem{corollary}[definition]{Corollary}}
 \theoremstyle{exstyle}{\newtheorem*{exercise}{Exercise}}
 \theoremstyle{mystyle}{\newtheorem*{solution}{Solution}}
@@ -213,7 +214,7 @@
 
 % 警告符号
 \newcommand{\warningsign}[1]{\tikz[scale=#1,every node/.style={transform shape}]{\draw[-,line width={#1*0.8mm},red,fill=yellow,rounded corners={#1*2.5mm}] (0,0)--(1,{-sqrt(3)})--(-1,{-sqrt(3)})--cycle;
-\node at (0,-1) {\fontsize{48}{60}\selectfont\bfseries!};}}
+        \node at (0,-1) {\fontsize{48}{60}\selectfont\bfseries!};}}
 
 % 环境样式
 \tcolorboxenvironment{definition}{boxrule=0pt,boxsep=0pt,colback={red!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{red},sharp corners,before skip=10pt,after skip=10pt,breakable}

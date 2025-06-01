@@ -71,7 +71,38 @@ Qiuyi.Chen@liverpool.ac.uk}
 
     Therefore, the equality states that for any parallelogram in $\mathbb{R}^2$ or $\mathbb{R}^3$, the sum of the squares of the lengths of the diagonals equals the sum of the squares of the lengths of all four sides. This is a fundamental property of parallelograms in Euclidean geometry, often called the parallelogram law.
 \end{solution}
+\begin{lemma}[3.1]
+    Let $\left\{S_\alpha\right\}_{\alpha \in A}$ be a collection of subsets of a set $X$. Then
 
+    \begin{equation*}
+        \begin{aligned}
+             & \bigcup_{\alpha \in A} S_\alpha=c\left[\bigcap_{\alpha \in A}\left(c S_\alpha\right)\right],  \\
+             & \bigcap_{\alpha \in A} S_\alpha=c\left[\bigcup_{\alpha \in A}\left(c S_\alpha\right)\right] .
+        \end{aligned}
+    \end{equation*}
+
+\end{lemma}
+\begin{proof}
+    We establish both identities by showing mutual inclusion of the corresponding sets.
+
+    \medskip
+    \textbf{1.~$\displaystyle \bigcup_{\alpha\in A} S_{\alpha} \;=\; c\Bigl[\bigcap_{\alpha\in A} (c S_{\alpha})\Bigr]$.}
+
+    \emph{(i)~Subset relation $\subseteq$.}  Let $x \in \bigcup_{\alpha\in A} S_{\alpha}$.  Then there exists an index $\alpha_0 \in A$ such that $x \in S_{\alpha_0}$.  If $x$ were also contained in $\bigcap_{\alpha\in A} (c S_{\alpha})$, it would belong to $c S_{\alpha_0}$, i.e.~$x \notin S_{\alpha_0}$, a contradiction.  Therefore $x \notin \bigcap_{\alpha\in A} (c S_{\alpha})$, which means $x \in c\bigl[\bigcap_{\alpha\in A} (c S_{\alpha})\bigr]$.
+
+    \emph{(ii)~Subset relation $\supseteq$.}  Conversely, take $x \in c\bigl[\bigcap_{\alpha\in A} (c S_{\alpha})\bigr]$.  Then $x \notin \bigcap_{\alpha\in A} (c S_{\alpha})$, so there exists an index $\alpha_1 \in A$ with $x \notin c S_{\alpha_1}$.  Equivalently, $x \in S_{\alpha_1}$, hence $x \in \bigcup_{\alpha\in A} S_{\alpha}$.  Combining (i) and (ii) yields the desired equality.
+
+    \medskip
+    \textbf{2.~$\displaystyle \bigcap_{\alpha\in A} S_{\alpha} \;=\; c\Bigl[\bigcup_{\alpha\in A} (c S_{\alpha})\Bigr]$.}
+
+    The argument is analogous.
+
+    \emph{(i)~Subset relation $\subseteq$.}  Let $x \in \bigcap_{\alpha\in A} S_{\alpha}$.  Then $x \in S_{\alpha}$ for every $\alpha$.  Consequently, $x \notin c S_{\alpha}$ for any $\alpha$, which implies $x \notin \bigcup_{\alpha\in A} (c S_{\alpha})$.  Hence $x \in c\bigl[\bigcup_{\alpha\in A} (c S_{\alpha})\bigr]$.
+
+    \emph{(ii)~Subset relation $\supseteq$.}  Let $x \in c\bigl[\bigcup_{\alpha\in A} (c S_{\alpha})\bigr]$.  Then $x \notin \bigcup_{\alpha\in A} (c S_{\alpha})$, so for every $\alpha \in A$ we have $x \notin c S_{\alpha}$; equivalently $x \in S_{\alpha}$.  Therefore $x \in \bigcap_{\alpha\in A} S_{\alpha}$.
+
+    Since both inclusions hold, the second identity follows.
+\end{proof}
 \begin{exercise}[4.1]
     Use the properties of the norm to show that the function $d$ defined by
     $$
