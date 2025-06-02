@@ -136,5 +136,64 @@ Qiuyi.Chen@liverpool.ac.uk}
 
     Since all three axioms hold, the function $d$ is indeed a metric on $\mathbb{R}^n$.
 \end{proof}
+\begin{exercise}[4.2]
+    (a) Sketch the graph of $y=\sin(1/x)$ for $x>0$.\\
+    (b) Consider the graph as a set in $\mathbb{R}^2$ and find the limit points of this set.
+\end{exercise}
+\begin{solution}
+    \textbf{(a)~Sketch of the curve.}  Set $t = 1/x$ for $x>0$.  Then the graph of $y = \sin(1/x)$ for $x>0$ corresponds to the standard sine curve $y = \sin t$ for $t>0$, but viewed through the change of variables $x = 1/t$.  As $x \to 0^{+}$ we have $t \to +\infty$, so the curve oscillates infinitely often between $-1$ and $1$ while its $x$--coordinate approaches~$0$.  For moderate values of~$x$ the graph resembles the usual sine curve stretched horizontally, whereas near the $y$--axis the oscillations become increasingly rapid, creating a "comb-like" fringe that accumulates on the interval $\{0\}\times[-1,1]$.
 
+    \medskip
+    \textbf{(b)~Limit points of the graph.}  Let
+    $$
+        S \;:=\; \bigl\{\,(x,\sin(1/x)) : x>0\,\bigr\}\subset \mathbb{R}^{2}.
+    $$
+    We claim that the set of limit points of $S$ is
+    $$
+        S' \;=\; S \;\cup\; \bigl\{\,(0,y) : -1 \le y \le 1\,\bigr\}.
+    $$
+    The verification proceeds in two steps.
+
+    \medskip
+    \emph{Step~1:  Every point of $S$ is a limit point.}  Fix $(x_{0},\sin(1/x_{0})) \in S$ with $x_{0}>0$ and let $\varepsilon>0$ be given.  Recall the elementary inequality $|\sin u-\sin v|\le |u-v|$ valid for all real numbers $u,v$.  Set
+    $$
+        \delta := \min\Bigl\{\frac{\varepsilon}{2},\, \frac{\varepsilon x_{0}^{2}}{4},\, \frac{x_{0}}{2}\Bigr\}.
+    $$
+    Pick any $x_{\varepsilon}\in(x_{0}-\delta,x_{0}+\delta)\setminus\{x_{0}\}$ and define $P_{\varepsilon}:=(x_{\varepsilon},\sin(1/x_{\varepsilon}))$.  Then $P_{\varepsilon}\in S$ and
+    $$
+        |x_{\varepsilon}-x_{0}|<\frac{\varepsilon}{2},\qquad |\sin(1/x_{\varepsilon})-\sin(1/x_{0})|\le |1/x_{\varepsilon}-1/x_{0}|=\frac{|x_{\varepsilon}-x_{0}|}{|x_{\varepsilon}|x_{0}}\le \frac{2\delta}{x_{0}^{2}}\le \frac{\varepsilon}{2}.
+    $$
+    Consequently
+    $$
+        \bigl\|P_{\varepsilon}-(x_{0},\sin(1/x_{0}))\bigr\|\le \sqrt{\bigl(|x_{\varepsilon}-x_{0}|\bigr)^{2}+\bigl(|\sin(1/x_{\varepsilon})-\sin(1/x_{0})|\bigr)^{2}}<\varepsilon,
+    $$
+    proving that $(x_{0},\sin(1/x_{0}))$ is indeed a limit point of $S$.
+
+    \medskip
+    \emph{Step~2:  Points of the form $(0,y)$ with $|y|\le 1$ are limit points.}  Fix $y\in[-1,1]$ and $\varepsilon>0$.  Because the sine function attains every value in $[-1,1]$ infinitely often, we can pick $t_{\varepsilon}>\max\{1/\varepsilon,0\}$ such that $|\sin t_{\varepsilon}-y|<\varepsilon$.  Setting $x_{\varepsilon}=1/t_{\varepsilon}$ we obtain $0<x_{\varepsilon}<\varepsilon$ and
+    $$
+        \bigl\|(x_{\varepsilon},\sin(1/x_{\varepsilon}))-(0,y)\bigr\|<\sqrt{\varepsilon^{2}+\varepsilon^{2}}<\sqrt{2}\,\varepsilon.
+    $$
+    Thus $(0,y)$ is approached by points of $S$ distinct from itself, so it is a limit point.
+
+    \medskip
+    \emph{Step~3:  No other points are limit points.}  If $x<0$, every open ball centred at $(x,y)$ contains points whose first coordinate is negative, whereas $S$ lies entirely in $x>0$; thus such points cannot be limit points.  If $x=0$ but $|y|>1$, the vertical separation $|y|-1$ already exceeds the range of $\sin$, so no sequence in $S$ can approach $(0,y)$.
+
+    Finally, consider a point $(x,y)$ with $x>0$ that does \\emph{not} belong to $S$.  Write $y_{0}:=\sin(1/x)$ and set $d:=|y-y_{0}|>0$.  Choose
+    $$
+        r:=\min\Bigl\{\frac{d}{2},\,\frac{x}{2}\Bigr\}.
+    $$
+    For any $(x',\sin(1/x'))\in S$ satisfying $|x'-x|<r$ we have $x'\ge x/2$ and hence, using $|\sin u-\sin v|\le|u-v|$ again,
+    $$
+        |\sin(1/x')-y_{0}|\le \frac{|x'-x|}{x' x}\le \frac{2r}{x^{2}}\le \frac{d}{2}.
+    $$
+    Therefore
+    $$
+        |\sin(1/x')-y|\ge |y-y_{0}|-|\sin(1/x')-y_{0}|>\frac{d}{2},
+    $$
+    so the Euclidean distance between $(x',\sin(1/x'))$ and $(x,y)$ exceeds $d/2$.  Hence the ball $B\bigl((x,y),d/2\bigr)$ contains no point of $S$, proving that $(x,y)$ is not a limit point.  Collecting the cases established in Steps~1--3 completes the description of $S'$.
+
+    \medskip
+    Consequently, the set of all limit points of the graph is precisely $S\cup\bigl(\{0\}\times[-1,1]\bigr)$, as asserted.
+\end{solution}
 \end{document}
