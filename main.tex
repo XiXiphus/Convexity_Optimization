@@ -212,4 +212,8 @@ Qiuyi.Chen@liverpool.ac.uk}
     $$
     Hence $z \in B(x,r)$.  Since every point $y$ of $B(x,r)$ is an interior point, the set $B(x,r)$ is open.
 \end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  To show that the open ball $B(x,r)$ is an open set we verify that every point it contains is an interior point.  Fix $y\in B(x,r)$ and measure how much "room" is left before reaching the boundary: the gap is $\varepsilon:=r-\|y-x\|>0$.  Any point $z$ that sits within this gap around $y$ (that is, $\|z-y\|<\varepsilon$) cannot escape the larger ball, because the triangle inequality guarantees $\|z-x\|<\|z-y\|+\|y-x\|<\varepsilon+\bigl(r-\varepsilon\bigr)=r$.  Thus the smaller ball $B(y,\varepsilon)$ lies completely inside $B(x,r)$, making $y$ an interior point.  Since $y$ was arbitrary, $B(x,r)$ is open.
+\end{remark}
 \end{document}
