@@ -196,4 +196,20 @@ Qiuyi.Chen@liverpool.ac.uk}
     \medskip
     Consequently, the set of all limit points of the graph is precisely $S\cup\bigl(\{0\}\times[-1,1]\bigr)$, as asserted.
 \end{solution}
+
+\begin{exercise}[4.3]
+    Show that for $x \in \mathbb{R}^n$ and $r>0$ the set $B(x , r)$ is open; that is, show that an open ball is open.
+\end{exercise}
+
+\begin{proof}
+    Let $y \in B(x,r)$, so by definition $\|y-x\| < r$.  Define
+    $$
+        \varepsilon \;:=\; r - \|y-x\| \;>\; 0.
+    $$
+    We claim that the entire ball $B(y,\varepsilon)$ is contained in $B(x,r)$.  Indeed, if $z \in B(y,\varepsilon)$ then $\|z-y\| < \varepsilon$, and by the triangle inequality,
+    $$
+        \|z-x\| \;\le\; \|z-y\| + \|y-x\| \;<\; \varepsilon + \|y-x\| \;=\; r.
+    $$
+    Hence $z \in B(x,r)$.  Since every point $y$ of $B(x,r)$ is an interior point, the set $B(x,r)$ is open.
+\end{proof}
 \end{document}
