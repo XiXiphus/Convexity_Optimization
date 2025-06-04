@@ -223,4 +223,25 @@ Qiuyi.Chen@liverpool.ac.uk}
 \begin{remark}
     \emph{Idea of the proof.}  To show that the open ball $B(x,r)$ is an open set we verify that every point it contains is an interior point.  Fix $y\in B(x,r)$ and measure how much "room" is left before reaching the boundary: the gap is $\varepsilon:=r-\|y-x\|>0$.  Any point $z$ that sits within this gap around $y$ (that is, $\|z-y\|<\varepsilon$) cannot escape the larger ball, because the triangle inequality guarantees $\|z-x\|<\|z-y\|+\|y-x\|<\varepsilon+\bigl(r-\varepsilon\bigr)=r$.  Thus the smaller ball $B(y,\varepsilon)$ lies completely inside $B(x,r)$, making $y$ an interior point.  Since $y$ was arbitrary, $B(x,r)$ is open.
 \end{remark}
+
+\begin{exercise}[4.4]
+    Show that for $x \in \mathbb{R}^n$ and $r>0$ the closed ball $\overline{B(x , r)}$ is closed.
+\end{exercise}
+
+\begin{proof}
+    Set $C:=\overline{B(x,r)}=\{y\in\mathbb R^{n}:\|y-x\|\le r\}$.  We show that its complement $C^{c}$ is open.  Let $y\in C^{c}$, so $\|y-x\|>r$.  Define
+    \[
+        \varepsilon\;:=\;\frac{\|y-x\|-r}{2}\;>\;0.
+    \]
+    If $z\in B(y,\varepsilon)$ then $\|z-y\|<\varepsilon$, and by the triangle inequality,
+    \[
+        \|z-x\|\;\ge\;\|y-x\|-\|z-y\|\;>\;\bigl(r+2\varepsilon\bigr)-\varepsilon\;=\;r+\varepsilon\;>\;r.
+    \]
+    Hence $z\notin C$.  Therefore $B(y,\varepsilon)\subset C^{c}$, proving that every point of $C^{c}$ is interior.  The complement of $C$ is open, so $C$ is closed.
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  For a point $y$ lying \emph{outside} the closed ball we measure how far it is from the boundary: the surplus distance is $\delta:=\|y-x\|-r>0$.  Choosing half of this surplus as a radius, $\varepsilon=\delta/2$, guarantees that the entire ball $B(y,\varepsilon)$ stays outside, because any point inside that small ball remains at least $r+\varepsilon>r$ away from $x$.  Since such a neighbourhood exists around each exterior point, the complement of the closed ball is open, which is exactly the definition of the original set being closed.
+\end{remark}
+
 \end{document}
