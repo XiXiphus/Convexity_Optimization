@@ -244,4 +244,51 @@ Qiuyi.Chen@liverpool.ac.uk}
     \emph{Idea of the proof.}  For a point $y$ lying \emph{outside} the closed ball we measure how far it is from the boundary: the surplus distance is $\delta:=\|y-x\|-r>0$.  Choosing half of this surplus as a radius, $\varepsilon=\delta/2$, guarantees that the entire ball $B(y,\varepsilon)$ stays outside, because any point inside that small ball remains at least $r+\varepsilon>r$ away from $x$.  Since such a neighbourhood exists around each exterior point, the complement of the closed ball is open, which is exactly the definition of the original set being closed.
 \end{remark}
 
+\begin{exercise}[4.5]
+    Show that any finite set of points $x _1, \ldots, x _k$ in $\mathbb{R}^n$ is closed.
+\end{exercise}
+
+\begin{proof}
+    Denote the finite set by $F:=\{x_{1},\ldots,x_{k}\}$.  We show that its complement $F^{c}$ is open.  Let $y\in F^{c}$; then $y\neq x_{i}$ for every $i$.  Define the positive distances
+    \[
+        d_{i}:=\|y-x_{i}\|>0, \qquad i=1,\ldots,k, \quad\text{and set}\quad \varepsilon:=\tfrac12\min_{1\le i\le k} d_{i}>0.
+    \]
+    For any $z\in B(y,\varepsilon)$ we have $\|z-y\|<\varepsilon\le d_{i}/2$, hence by the triangle inequality
+    \[
+        \|z-x_{i}\| \;\ge\; \|y-x_{i}\|-\|z-y\| \;>\; d_{i}-\varepsilon \;\ge\; \tfrac12 d_{i}>0\quad(1\le i\le k).
+    \]
+    Consequently $z\neq x_{i}$ for every $i$, i.e.~$z\in F^{c}$.  Thus $B(y,\varepsilon)\subset F^{c}$, so every exterior point is interior to the complement; $F^{c}$ is open and $F$ is closed.
+
+    An alternative argument is to note that each singleton $\{x_{i}\}$ is closed (apply the previous step with $k=1$) and that a finite union of closed sets remains closed:
+    \[
+        F\;=\;\bigcup_{i=1}^{k}\{x_{i}\}.\qedhere
+    \]
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  For a point $y$ not in the finite set we compute its distances to each listed point.  The smallest of these distances is still positive; taking half of it as the radius gives a neighbourhood around $y$ that misses the entire finite set, showing the complement is open.  Equivalently, observe that singletons are closed and a finite union of closed sets is closed.
+\end{remark}
+
+\begin{exercise}[4.6]
+    Show that in $\mathbb{R}^n$ no point $x$ with $\|x\|=1$ is an interior point of the closed unit ball $\overline{B(0,1)}$.
+\end{exercise}
+
+\begin{proof}
+    Let $x\in\mathbb R^{n}$ satisfy $\|x\|=1$.  To show that $x$ is \emph{not} an interior point of $\overline{B(0,1)}$ we must prove that every open ball centred at $x$ contains points that lie \emph{outside} $\overline{B(0,1)}$.
+
+    Fix an arbitrary radius $r>0$ and define
+    \[
+        y\;:=\;\bigl(1+\tfrac{r}{2}\bigr)\,x.
+    \]
+    Then
+    \[
+        \|y-x\|=\Bigl|\,1+\tfrac{r}{2}-1\Bigr|\,\|x\|=\frac{r}{2}<r,\qquad \text{but}\qquad \|y\|=1+\tfrac{r}{2}>1.
+    \]
+    Hence $y$ lies within the ball $B(x,r)$ yet satisfies $\|y\|>1$, so $y\notin\overline{B(0,1)}$.  Consequently $B(x,r)$ is \emph{not} contained in $\overline{B(0,1)}$.  Because $r>0$ was arbitrary, no open neighbourhood of $x$ sits inside the closed unit ball, and thus $x$ is not an interior point.
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  Any boundary point $x$ with $\|x\|=1$ can be pushed slightly outward along its own direction: scaling by $1+\varepsilon$ moves the point a distance roughly $\varepsilon$ while immediately leaving the unit ball.  No matter how small a radius we choose, such an outward perturbation fits inside the radius yet escapes the ball, so the original point cannot be interior.
+\end{remark}
+
 \end{document}
