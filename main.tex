@@ -277,18 +277,40 @@ Qiuyi.Chen@liverpool.ac.uk}
     Let $x\in\mathbb R^{n}$ satisfy $\|x\|=1$.  To show that $x$ is \emph{not} an interior point of $\overline{B(0,1)}$ we must prove that every open ball centred at $x$ contains points that lie \emph{outside} $\overline{B(0,1)}$.
 
     Fix an arbitrary radius $r>0$ and define
-    \[
+    $$
         y\;:=\;\bigl(1+\tfrac{r}{2}\bigr)\,x.
-    \]
+    $$
     Then
-    \[
+    $$
         \|y-x\|=\Bigl|\,1+\tfrac{r}{2}-1\Bigr|\,\|x\|=\frac{r}{2}<r,\qquad \text{but}\qquad \|y\|=1+\tfrac{r}{2}>1.
-    \]
+    $$
     Hence $y$ lies within the ball $B(x,r)$ yet satisfies $\|y\|>1$, so $y\notin\overline{B(0,1)}$.  Consequently $B(x,r)$ is \emph{not} contained in $\overline{B(0,1)}$.  Because $r>0$ was arbitrary, no open neighbourhood of $x$ sits inside the closed unit ball, and thus $x$ is not an interior point.
 \end{proof}
 
 \begin{remark}
     \emph{Idea of the proof.}  Any boundary point $x$ with $\|x\|=1$ can be pushed slightly outward along its own direction: scaling by $1+\varepsilon$ moves the point a distance roughly $\varepsilon$ while immediately leaving the unit ball.  No matter how small a radius we choose, such an outward perturbation fits inside the radius yet escapes the ball, so the original point cannot be interior.
+\end{remark}
+
+\begin{exercise}[4.7]
+    Show that for any set $S$ in $\mathbb{R}^n$ the set $\bar{S}$ (the closure of $S$) is closed.
+\end{exercise}
+
+\begin{proof}
+    Recall that the closure of $S$ is defined by
+    \[
+        \bar{S}\;:=\;\bigl\{x\in\mathbb R^{n}:\forall r>0,\;B(x,r)\cap S\ne\emp\bigr\}.
+    \]
+    We shall prove that its complement $\bar{S}^{\mathrm c}$ is open.
+
+    Let $y\in\bar{S}^{\mathrm c}$.  By definition of the complement, there exists a radius $r_{0}>0$ such that the open ball $B(y,r_{0})$ does \emph{not} meet $S$; otherwise $y$ would belong to the closure.  In particular, for this same $r_{0}$ we have
+    \[
+        B(y,r_{0})\cap S=\emp \quad\Longrightarrow\quad B(y,r_{0})\cap \bar{S}=\emp,
+    \]
+    because $\bar{S}$ contains $S$.  Hence $B(y,r_{0})$ lies entirely inside $\bar{S}^{\mathrm c}$, showing that $y$ is an interior point of the complement.  Since every point of $\bar{S}^{\mathrm c}$ is interior, the complement is open; equivalently, $\bar{S}$ is closed.
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  A point fails to belong to the closure precisely when some open ball around it avoids $S$.  But that same ball automatically avoids $\bar{S}$ as well, so it sits inside the complement.  Thus every exterior point has a protective open neighbourhood—the hallmark of an open set—so the complement is open and the closure is closed.
 \end{remark}
 
 \end{document}
