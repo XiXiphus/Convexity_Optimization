@@ -313,4 +313,124 @@ Qiuyi.Chen@liverpool.ac.uk}
     \emph{Idea of the proof.}  A point fails to belong to the closure precisely when some open ball around it avoids $S$.  But that same ball automatically avoids $\bar{S}$ as well, so it sits inside the complement.  Thus every exterior point has a protective open neighbourhood—the hallmark of an open set—so the complement is open and the closure is closed.
 \end{remark}
 
+\begin{exercise}[4.8]
+    Show that for any set $S$ the closure $\bar{S}$ is equal to the intersection of all closed sets containing $S$.
+\end{exercise}
+
+\begin{proof}
+    Denote by
+    \[
+        \mathcal{F}\;:=\;\bigl\{\,F\subset\mathbb R^{n}:F\text{ is closed and }S\subset F\,\bigr\},
+        \qquad
+        K\;:=\;\bigcap_{F\in\mathcal{F}}F.
+    \]
+    The intersection of any family of closed sets is closed, hence $K$ is closed.  Because $S\subset F$ for every $F\in\mathcal{F}$, we also have $S\subset K$.
+
+    \medskip
+    \textbf{1.~$\bar S\subset K$.}  Let $F\in\mathcal{F}$.  Since $F$ is closed and contains $S$, the closure property of $\bar S$ implies $\bar S\subset F$.  This holds for every $F\in\mathcal{F}$, therefore $\bar S\subset K$.
+
+    \medskip
+    \textbf{2.~$K\subset\bar S$.}  The closure $\bar S$ itself is closed and contains $S$, so $\bar S\in\mathcal{F}$.  Intersecting over $\mathcal{F}$ cannot yield a set larger than one of its members, hence $K\subset\bar S$.
+
+    \medskip
+    Combining the two inclusions gives $K=\bar S$.  That is, the closure of $S$ coincides with the intersection of all closed sets that contain $S$.
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  The family of all closed supersets of $S$ has a natural "smallest" member given by their intersection $K$.  Because $K$ is itself closed and contains $S$, the closure $\bar S$—which is the minimal closed set containing $S$—must sit inside $K$.  On the other hand, $\bar S$ belongs to the family, so the intersection $K$ cannot fall outside $\bar S$.  The two sets therefore match exactly.
+\end{remark}
+
+\subsection{Limits and Continuity}
+\begin{exercise}[5.1]
+    (i) The limit of a convergent sequence is unique.\\
+    (ii) Let $\lim _{k \rightarrow \infty} x _k= x _0$, let $\lim _{k \rightarrow \infty} y _k= y _0$, and let $\lim _{k \rightarrow \infty} \alpha_k=\alpha$, where $\left\{\alpha_k\right\}$ is a sequence of scalars. Then $\lim _{k \rightarrow \infty}\left( x _k+ y _k\right)$ exists and equals $x _0+ y _0$, and $\lim _{k \rightarrow \infty} \alpha_k x _k$ exists and equals $\alpha x _0$.\\
+    (iii) A convergent sequence is bounded.
+\end{exercise}
+
+\begin{proof}
+    We work in $\mathbb R^{n}$ and use the standard $\Vert\cdot\Vert$ norm; limits are taken with respect to this norm.
+
+    \medskip
+    \textbf{(i)~Uniqueness of the limit.}  Suppose a sequence $\{x_{k}\}$ converges to both $\ell_{1}$ and $\ell_{2}$.  Fix $\varepsilon>0$ and choose $N_{1},N_{2}\in\mathbb N$ such that
+    \[
+        k\ge N_{1}\;\Longrightarrow\;\Vert x_{k}-\ell_{1}\Vert<\varepsilon/2,
+        \qquad
+        k\ge N_{2}\;\Longrightarrow\;\Vert x_{k}-\ell_{2}\Vert<\varepsilon/2.
+    \]
+    For $k\ge\max\{N_{1},N_{2}\}$ we then have
+    \[
+        \Vert\ell_{1}-\ell_{2}\Vert\;\le\;\Vert\ell_{1}-x_{k}\Vert+\Vert x_{k}-\ell_{2}\Vert<\varepsilon.
+    \]
+    Because $\varepsilon$ was arbitrary, $\Vert\ell_{1}-\ell_{2}\Vert=0$, whence $\ell_{1}=\ell_{2}$.  The limit is therefore unique.
+
+    \medskip
+    \textbf{(ii)~Limits of sums and scalar multiples.}
+    \begin{enumerate}
+        \item  Let $\varepsilon>0$.  Choose $N_{1},N_{2}$ such that $k\ge N_{1}$ implies $\Vert x_{k}-x_{0}\Vert<\varepsilon/2$ and $k\ge N_{2}$ implies $\Vert y_{k}-y_{0}\Vert<\varepsilon/2$.  For $k\ge N:=\max\{N_{1},N_{2}\}$ we have
+              \[
+                  \Vert(x_{k}+y_{k})-(x_{0}+y_{0})\Vert\;\le\;\Vert x_{k}-x_{0}\Vert+\Vert y_{k}-y_{0}\Vert<\varepsilon.
+              \]
+              Hence $x_{k}+y_{k}\to x_{0}+y_{0}$.
+
+        \item  Given $\varepsilon>0$, convergence of $\alpha_{k}$ means there exists $N_{1}$ with $|\alpha_{k}-\alpha|<\varepsilon/(2(1+\Vert x_{0}\Vert))$ for $k\ge N_{1}$.  Convergence of $x_{k}$ gives $N_{2}$ with $\Vert x_{k}-x_{0}\Vert<\varepsilon/(2(1+|\alpha|))$ for $k\ge N_{2}$.  For $k\ge N:=\max\{N_{1},N_{2}\}$ we estimate
+              \[
+                  \Vert \alpha_{k}x_{k}-\alpha x_{0} \Vert\;\le\;|\alpha_{k}-\alpha|\,\Vert x_{k}\Vert+|\alpha|\,\Vert x_{k}-x_{0}\Vert.
+              \]
+              The triangle inequality together with $\Vert x_{k}\Vert\le\Vert x_{k}-x_{0}\Vert+\Vert x_{0}\Vert$ yields
+              \[
+                  \Vert \alpha_{k}x_{k}-\alpha x_{0} \Vert<\frac{\varepsilon}{2}\frac{\Vert x_{k}-x_{0}\Vert+\Vert x_{0}\Vert}{1+\Vert x_{0}\Vert}+\frac{\varepsilon}{2}=\varepsilon.
+              \]
+              Thus $\alpha_{k}x_{k}\to\alpha x_{0}$.
+    \end{enumerate}
+
+    \medskip
+    \textbf{(iii)~A convergent sequence is bounded.}  Let $x_{k}\to x_{0}$.  Take $\varepsilon:=1$ and choose $N$ so that $\Vert x_{k}-x_{0}\Vert<1$ for all $k\ge N$.  Then
+    \[
+        \Vert x_{k}\Vert\le\Vert x_{k}-x_{0}\Vert+\Vert x_{0}\Vert<1+\Vert x_{0}\Vert\quad(k\ge N).
+    \]
+    Define
+    \[
+        M\;:=\;\max\bigl\{\,\Vert x_{1}\Vert,\ldots,\Vert x_{N-1}\Vert,\,1+\Vert x_{0}\Vert\bigr\}.
+    \]
+    Every term of the sequence satisfies $\Vert x_{k}\Vert\le M$, so the sequence is bounded.
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  Uniqueness comes from squeezing two putative limits together via the triangle inequality.  The limit laws follow by splitting the error of a sum or product into individually controllable parts.  Boundedness is immediate once the tail of the sequence lies in a fixed ball around its limit, while the finitely many initial terms can be absorbed into a single bound.
+\end{remark}
+
+\begin{exercise}[5.2]
+    Show that if $\lim _{x \rightarrow s} f ( x )= L$, then $L$ is unique.
+\end{exercise}
+
+\begin{proof}
+    Assume that $f$ approaches two limits $L_{1}$ and $L_{2}$ at the point $s$.  We show that they must coincide.
+
+    Suppose, for contradiction, that $L_{1}\neq L_{2}$.  Set
+    \[
+        \varepsilon\;:=\;\frac{|L_{1}-L_{2}|}{3}\;>\;0.
+    \]
+    Because $\lim_{x\to s}f(x)=L_{1}$, there exists $\delta_{1}>0$ such that
+    \[
+        0<|x-s|<\delta_{1}\;\Longrightarrow\;|f(x)-L_{1}|<\varepsilon.
+    \]
+    Likewise, convergence to $L_{2}$ furnishes $\delta_{2}>0$ with
+    \[
+        0<|x-s|<\delta_{2}\;\Longrightarrow\;|f(x)-L_{2}|<\varepsilon.
+    \]
+    Now choose any $x$ satisfying
+    \[
+        0<|x-s|<\delta\;:=\;\min\{\delta_{1},\delta_{2}\}.
+    \]
+    Then both inequalities hold simultaneously, and the triangle inequality gives
+    \[
+        |L_{1}-L_{2}|\;\le\;|L_{1}-f(x)|+|f(x)-L_{2}|<\varepsilon+\varepsilon=\tfrac23|L_{1}-L_{2}|,
+    \]
+    which is impossible.  Hence our assumption $L_{1}\neq L_{2}$ must be false; therefore $L_{1}=L_{2}$.  The limit value is unique.
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  If two distinct numbers both pretend to be the limit, pick an $\varepsilon$ slightly smaller than their separation.  Close enough to $s$, the function has to lie within that $\varepsilon$-tube around each candidate limit, but those two tubes do not overlap—contradiction.  The triangle inequality formalises this intuition and forces the two limits to coincide.
+\end{remark}
+
 \end{document}
