@@ -433,4 +433,76 @@ Qiuyi.Chen@liverpool.ac.uk}
     \emph{Idea of the proof.}  If two distinct numbers both pretend to be the limit, pick an $\varepsilon$ slightly smaller than their separation.  Close enough to $s$, the function has to lie within that $\varepsilon$-tube around each candidate limit, but those two tubes do not overlap—contradiction.  The triangle inequality formalises this intuition and forces the two limits to coincide.
 \end{remark}
 
+\begin{exercise}[5.3]
+    Prove the following theorem.\\
+    Let $\lim _{ x \rightarrow s } f ( x )= L$ and let $\lim _{ x \rightarrow s } g ( x )= M$. Then
+
+    \begin{equation*}
+        \lim _{x \rightarrow s}[f(x)+g(x)]
+    \end{equation*}
+
+    exists and equals $L + M$. Also $\lim _{ x \rightarrow s }[\alpha f ( x )]$ exists and equals $\alpha L$.
+    A useful sequential criterion for the existence of a limit is now given.
+\end{exercise}
+
+\begin{proof}
+    We verify the two limit laws using the $\varepsilon$--$\delta$ definition.
+
+    \medskip
+    \textbf{1.~Sum rule.}  Fix $\varepsilon>0$ and set $\varepsilon_{0}:=\varepsilon/2$.  Because $\lim_{x\to s} f(x)=L$, there is $\delta_{1}>0$ such that
+    \[
+        0<|x-s|<\delta_{1}\;\Longrightarrow\;|f(x)-L|<\varepsilon_{0}.
+    \]
+    Likewise, $\lim_{x\to s} g(x)=M$ yields $\delta_{2}>0$ with
+    \[
+        0<|x-s|<\delta_{2}\;\Longrightarrow\;|g(x)-M|<\varepsilon_{0}.
+    \]
+    Let $\delta:=\min\{\delta_{1},\delta_{2}\}$.  Then for $0<|x-s|<\delta$ we have
+    \[
+        |[f(x)+g(x)]-(L+M)|\;\le\;|f(x)-L|+|g(x)-M|<\varepsilon_{0}+\varepsilon_{0}=\varepsilon.
+    \]
+    Hence $\lim_{x\to s}[f(x)+g(x)]=L+M$.
+
+    \medskip
+    \textbf{2.~Scalar--multiple rule.}  Let $\alpha\in\mathbb R$ and fix $\varepsilon>0$.  Because $f(x)\to L$, there exists $\delta>0$ such that $0<|x-s|<\delta$ implies $|f(x)-L|<\varepsilon/|\alpha|$ if $\alpha\neq0$; when $\alpha=0$ the conclusion is immediate.  Then
+    \[
+        |\alpha f(x)-\alpha L|=|\alpha|\,|f(x)-L|<\varepsilon,
+    \]
+    establishing $\lim_{x\to s}[\alpha f(x)]=\alpha L$.
+
+    \medskip
+    \textbf{3.~Sequential criterion.}  We claim that a limit $\lim_{x\to s} h(x)=H$ exists exactly when for every sequence $\{x_{n}\}$ with $x_{n}\neq s$ and $x_{n}\to s$, the sequence $h(x_{n})$ converges to $H$.
+
+    \emph{($\Rightarrow$)}  If the limit exists, then given $\varepsilon>0$ the $\varepsilon$--$\delta$ condition furnishes $\delta>0$.  Eventually $|x_{n}-s|<\delta$, forcing $|h(x_{n})-H|<\varepsilon$, so $h(x_{n})\to H$.
+
+    \emph{($\Leftarrow$)}  Conversely, suppose $h$ does not converge to $H$.  Then there exists $\varepsilon_{0}>0$ such that for every $\delta>0$ we can pick $x$ with $0<|x-s|<\delta$ and $|h(x)-H|\ge\varepsilon_{0}$.  Construct $x_{n}$ inductively with $|x_{n}-s|<1/n$ and $|h(x_{n})-H|\ge\varepsilon_{0}$.  Then $x_{n}\to s$ yet $h(x_{n})$ stays $\varepsilon_{0}$ away from $H$, contradicting the sequential hypothesis.  Hence the $\varepsilon$--$\delta$ definition must hold.
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  The sum rule splits the error of $f+g$ into the errors of $f$ and $g$, each made arbitrarily small; the scalar rule simply factors out $\alpha$.  The sequential criterion states that functions inherit their limits along every path approaching $s$, and conversely any failure of the $\varepsilon$--$\delta$ condition can be translated into a "bad" sequence that prevents convergence.
+\end{remark}
+
+\begin{exercise}[5.4]
+    Let $f$ be a real-valued function defined on a set $S$ in $R ^n$. Show that if $f$ is continuous at a point $x _0$ in $S$ and if $f\left( x _0\right)<0$, then there exists a $\delta>0$ such that $f( x )<0$ for all $x$ in $B\left( x _0, \delta\right) \cap S$.
+\end{exercise}
+
+\begin{proof}
+    Because $f$ is continuous at $x_{0}\in S$ and $f(x_{0})<0$, let us set
+    \[
+        \varepsilon\;:=\;\frac{-f(x_{0})}{2}\;>\;0.
+    \]
+    By continuity, there exists $\delta>0$ such that for every $x\in S$ with $\|x-x_{0}\|<\delta$ we have
+    \[
+        |f(x)-f(x_{0})|<\varepsilon.
+    \]
+    For such $x$ we estimate
+    \[
+        f(x)\;=\;f(x_{0})+\bigl(f(x)-f(x_{0})\bigr)\;<\;f(x_{0})+\varepsilon\;=\;f(x_{0})-\tfrac12 f(x_{0})\;=\;\tfrac12 f(x_{0})\;<\;0.
+    \]
+    Hence $f(x)<0$ for all $x\in B(x_{0},\delta)\cap S$, as required.
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  Continuity lets us control $f(x)$ by forcing it to stay within an $\varepsilon$--band around $f(x_{0})$.  Choosing $\varepsilon$ to be less than half the magnitude of the negative value $f(x_{0})$ guarantees that $f(x)$ remains negative throughout a small ball centred at $x_{0}$.
+\end{remark}
 \end{document}
