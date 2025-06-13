@@ -483,7 +483,7 @@ Qiuyi.Chen@liverpool.ac.uk}
 \end{remark}
 
 \begin{exercise}[5.4]
-    Let $f$ be a real-valued function defined on a set $S$ in $R ^n$. Show that if $f$ is continuous at a point $x _0$ in $S$ and if $f\left( x _0\right)<0$, then there exists a $\delta>0$ such that $f( x )<0$ for all $x$ in $B\left( x _0, \delta\right) \cap S$.
+    Let $f$ be a real-valued function defined on a set $S$ in $\mathbb{R} ^n$. Show that if $f$ is continuous at a point $x _0$ in $S$ and if $f\left( x _0\right)<0$, then there exists a $\delta>0$ such that $f( x )<0$ for all $x$ in $B\left( x _0, \delta\right) \cap S$.
 \end{exercise}
 
 \begin{proof}
@@ -503,6 +503,34 @@ Qiuyi.Chen@liverpool.ac.uk}
 \end{proof}
 
 \begin{remark}
-    \emph{Idea of the proof.}  Continuity lets us control $f(x)$ by forcing it to stay within an $\varepsilon$--band around $f(x_{0})$.  Choosing $\varepsilon$ to be less than half the magnitude of the negative value $f(x_{0})$ guarantees that $f(x)$ remains negative throughout a small ball centred at $x_{0}$.
+    \emph{Idea of the proof.}  Continuity lets us control $f(x)$ by forcing it to stay within an $\varepsilon$-band around $f(x_{0})$.  Choosing $\varepsilon$ to be less than half the magnitude of the negative value $f(x_{0})$ guarantees that $f(x)$ remains negative throughout a small ball centred at $x_{0}$.
 \end{remark}
+
+\begin{exercise}[5.5]
+    Show that the real-valued function $f: \mathbb{R} ^n \rightarrow \mathbb{R} ^1$ defined by $f( x )=\| x \|$ is continuous on $\mathbb{R} ^n$ (i.e., show that the norm is a continuous function). Hint: Use the triangle inequality to show that, for any pair of vectors $x$ and $y ,|\| x \|-\| y \|| \leqslant\| x - y \|$.
+\end{exercise}
+
+\begin{proof}
+    We first observe the following key inequality, valid for all $x,y\in\mathbb R^{n}$:
+    \[
+        \bigl|\,\Vert x\Vert-\Vert y\Vert\,\bigr|\;\le\;\Vert x-y\Vert.\tag{$\ast$}
+    \]
+    Indeed, the triangle inequality gives $\Vert x\Vert=\Vert(x-y)+y\Vert\le\Vert x-y\Vert+\Vert y\Vert$, hence $\Vert x\Vert-\Vert y\Vert\le\Vert x-y\Vert$.  Interchanging $x$ and $y$ yields $\Vert y\Vert-\Vert x\Vert\le\Vert x-y\Vert$.  Combining the two estimates proves~($\ast$).
+
+    \medskip
+    Fix an arbitrary point $x_{0}\in\mathbb R^{n}$ and let $\varepsilon>0$ be given.  Choose
+    \[
+        \delta\;:=\;\varepsilon.
+    \]
+    Then, whenever $\Vert x-x_{0}\Vert<\delta$, inequality~($\ast$) implies
+    \[
+        \bigl|\,\Vert x\Vert-\Vert x_{0}\Vert\,\bigr|\;\le\;\Vert x-x_{0}\Vert\;<\;\delta\;=\;\varepsilon.
+    \]
+    Therefore, for every $x_{0}\in\mathbb R^{n}$ and every $\varepsilon>0$, there exists $\delta=\varepsilon$ such that the $\varepsilon$--$\delta$ criterion for continuity is satisfied.  Hence the norm function $f(x)=\Vert x\Vert$ is continuous at every point of $\mathbb R^{n}$; in other words, it is continuous on $\mathbb R^{n}$.
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  The norm is in fact \emph{Lipschitz} with constant~$1$: the distance between its values never exceeds the distance between the inputs.  This strong inequality not only establishes pointwise continuity via the standard $\varepsilon$--$\delta$ argument (take $\delta=\varepsilon$), but also shows that the norm is uniformly continuous on the whole space.
+\end{remark}
+
 \end{document}
