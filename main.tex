@@ -533,4 +533,44 @@ Qiuyi.Chen@liverpool.ac.uk}
     \emph{Idea of the proof.}  The norm is in fact \emph{Lipschitz} with constant~$1$: the distance between its values never exceeds the distance between the inputs.  This strong inequality not only establishes pointwise continuity via the standard $\varepsilon$--$\delta$ argument (take $\delta=\varepsilon$), but also shows that the norm is uniformly continuous on the whole space.
 \end{remark}
 
+\subsection{Basic Property of Real Numbers}
+
+\begin{exercise}[6.1]
+    Let $L=$ g.l.b. of a set $S$. Show that there exists a sequence of points $\left\{x_k\right\}$ in $S$ such that $x_k \rightarrow L$. Show that the sequence $\left\{x_k\right\}$ can be taken to be nonincreasing, that is, $x_{k+1} \leqslant x_k$ for every $k$. Does $L$ have to be a limit point of $S$?
+\end{exercise}
+
+\begin{proof}
+    Because $L=\inf S$, by definition we have $L\le x$ for every $x\in S$ and, moreover, for each $\varepsilon>0$ the interval $(L, L+\varepsilon)$ contains at least one point of $S$.
+
+    \medskip
+    \textbf{1.~Construction of a convergent sequence.}  For each integer $k\ge1$ choose $x_{k}\in S$ such that
+    \[
+        L\;\le\;x_{k}\;<\;L+\frac{1}{k}.
+    \]
+    Then $0\le x_{k}-L<1/k\to0$, so $x_{k}\to L$.
+
+    \medskip
+    \textbf{2.~Making the sequence nonincreasing.}  Define recursively
+    \[
+        y_{1}:=x_{1},\qquad y_{k}:=\min\{y_{k-1},x_{k}\}\quad(k\ge2).
+    \]
+    Each $y_{k}$ belongs to $S$ (because it equals either $y_{k-1}$ or $x_{k}$) and by construction $y_{k+1}\le y_{k}$, so the sequence $\{y_{k}\}$ is nonincreasing.  Furthermore,
+    \[
+        L\le y_{k}\le x_{k}<L+\frac{1}{k}\longrightarrow L,
+    \]
+    hence $y_{k}\to L$.  Thus we have produced a nonincreasing sequence in $S$ converging to~$L$.
+
+    \medskip
+    \textbf{3.~Is $L$ necessarily a limit point of $S$?}  Not always.  Take for example the set
+    \[
+        S\;:=\;\{0\}\cup\bigl\{1+1/n:n\in\mathbb N\bigr\}\subset\mathbb R.
+    \]
+    Its greatest lower bound is $L=0$, which belongs to $S$.  However, there exists $\varepsilon=1/2$ such that $(0,\varepsilon)$ contains no points of $S$ other than~$0$ itself; hence $0$ is \emph{not} a limit point of~$S$.  (It is an isolated point.)  Therefore the g.l.b.
+    of a set need not be a limit point.
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  The infimum can be approached arbitrarily closely from above by points of $S$; picking one such point in each shrinking band $(L, L+1/k)$ yields convergence.  Enforcing monotonicity is achieved by successively taking the smaller of the previous choice and the new candidate.  The final example shows that possessing sequences converging to $L$ does not force $L$ to be an accumulation point—this fails whenever $L$ is an isolated minimum of~$S$.
+\end{remark}
+
 \end{document}
