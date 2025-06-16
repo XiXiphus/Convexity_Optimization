@@ -573,4 +573,110 @@ Qiuyi.Chen@liverpool.ac.uk}
     \emph{Idea of the proof.}  The infimum can be approached arbitrarily closely from above by points of $S$; picking one such point in each shrinking band $(L, L+1/k)$ yields convergence.  Enforcing monotonicity is achieved by successively taking the smaller of the previous choice and the new candidate.  The final example shows that possessing sequences converging to $L$ does not force $L$ to be an accumulation point—this fails whenever $L$ is an isolated minimum of~$S$.
 \end{remark}
 
+\begin{exercise}[6.2]
+    Let $S$ be a set in $\mathbb{R} ^1$. We define $-S$ to be $\{x:-x \in S\}$. Thus $-S$ is the set that we obtain by replacing each element $x$ in $S$ by the element $-x$. Show that $S$ is bounded below if and only if $-S$ is bounded above. Show that $\alpha$ is the g.l.b. of $S$ if and only if $-\alpha$ is the l.u.b. of $-S$.
+\end{exercise}
+
+\begin{proof}
+    Recall that for a subset $A\subset\mathbb R$ the set $-A$ is defined by $-A:=\{-x:x\in A\}$.
+
+    \medskip
+    \textbf{(i)~Boundedness.}  Suppose first that $S$ is bounded below; that is, there exists $m\in\mathbb R$ such that $m\le x$ for every $x\in S$.  Then for any $y\in -S$ we can write $y=-x$ with $x\in S$, whence
+    \[
+        y=-x\le -m.
+    \]
+    Hence $-m$ is an upper bound of $-S$, so $-S$ is bounded above.  The converse follows by applying the same argument to $-S$ in place of $S$ (note that $-(-S)=S$): if $-S$ is bounded above, say $y\le M$ for all $y\in -S$, then $x=-y$ satisfies $-M\le x$ for all $x\in S$, proving that $S$ is bounded below.
+
+    \medskip
+    \textbf{(ii)~Greatest lower bound vs.~least upper bound.}  Assume $\alpha$ is the greatest lower bound (infimum) of $S$.
+    \begin{enumerate}
+        \item  \emph{$-\alpha$ is an upper bound of $-S$.}  For every $y\in -S$ there exists $x\in S$ with $y=-x\le -\alpha$ because $\alpha\le x$.
+        \item  \emph{Minimality.}  Let $u$ be any upper bound of $-S$.  Then $-u$ is a lower bound of $S$, so $\alpha\le -u$ by optimality of $\alpha$.  Multiplying by $-1$ reverses the inequality, giving $-\alpha\ge u$.  Therefore $-\alpha$ is the \emph{least} upper bound of $-S$.
+    \end{enumerate}
+    Consequently $-\alpha=\sup(-S)$.
+
+    The converse direction is identical: if $-\alpha$ is the least upper bound of $-S$, then multiplying all relevant inequalities by $-1$ shows that $\alpha$ is the greatest lower bound of $S$.
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  Multiplication by $-1$ reflects the real line about the origin, swapping the roles of "above" and "below" while preserving order up to sign.  Thus lower bounds of $S$ correspond exactly to upper bounds of $-S$, and extremal (least/ greatest) bounds correspond under the same reflection.
+\end{remark}
+
+\begin{exercise}[6.3]
+    Let $A$ and $B$ be two bounded sets of real numbers with $A \subseteq B$. Show that
+    \begin{equation*}
+        \begin{gathered}
+            \sup \{a: a \in A\} \leqslant \sup \{b: b \in B\}, \\
+            \inf \{a: a \in A\} \geqslant \inf \{b: b \in B\} .
+        \end{gathered}
+    \end{equation*}
+\end{exercise}
+
+\begin{proof}
+    Because $A \subseteq B$, every element $a\in A$ is also an element of $B$.
+
+    \medskip
+    \textbf{1.~Supremum.}  Let $M := \sup\{b : b \in B\}$.  Since $M$ is an upper bound of $B$, it is in particular an upper bound of $A$.  The least upper bound of $A$ cannot exceed any of its upper bounds; hence
+    \[
+        \sup A \;\le\; M \;=\; \sup B.
+    \]
+
+    \medskip
+    \textbf{2.~Infimum.}  Let $m := \inf\{b : b \in B\}$.  Then $m$ is a lower bound of $B$, so $m \le a$ for every $a \in A$.  Thus $m$ is also a lower bound of $A$.  The greatest lower bound of $A$ dominates all its lower bounds, yielding
+    \[
+        \inf A \;\ge\; m \;=\; \inf B.
+    \]
+
+    \medskip
+    Combining the two parts proves the claimed inequalities.
+\end{proof}
+
+\begin{remark}
+    \emph{Idea of the proof.}  Enlarging a set cannot lower its least upper bound nor raise its greatest lower bound: new elements can only push the supremum upward and the infimum downward, never in the opposite direction.
+\end{remark}
+
+\begin{exercise}[6.4]
+    Let $A$ and $B$ be two sets of real numbers.
+    (i) Show that if $A$ and $B$ are bounded above, then
+
+    \begin{equation*}
+        \sup \{(a+b): a \in A, b \in B\}=\sup \{a: a \in A\}+\sup \{b: b \in B\}
+    \end{equation*}
+
+    (ii) Show that if $A$ and $B$ are bounded below, then
+
+    \begin{equation*}
+        \inf \{(a+b): a \in A, b \in B\}=\inf \{a: a \in A\}+\inf \{b: b \in B\}
+    \end{equation*}
+
+\end{exercise}
+\begin{proof}
+    Denote
+    \[
+        S := \{a + b : a \in A,\ b \in B\}, \quad \alpha := \sup A,\ \beta := \sup B, \quad \gamma := \inf A,\ \delta := \inf B.
+    \]
+
+    \medskip
+    \textbf{(i) Supremum of sums.} Assume $A$ and $B$ are bounded above, so $\alpha, \beta \in \mathbb{R}$.
+    \begin{enumerate}
+        \item \emph{Upper bound.} For any $a \in A$ and $b \in B$, we have $a \leq \alpha$ and $b \leq \beta$, hence $a + b \leq \alpha + \beta$. Thus $\alpha + \beta$ is an upper bound of $S$, implying $\sup S \leq \alpha + \beta$.
+        \item \emph{Attaining the bound arbitrarily closely.} Since $\alpha = \sup A$, for each $k \geq 1$ there exists $a_k \in A$ with $\alpha - 1/k < a_k \leq \alpha$. Similarly, choose $b_k \in B$ with $\beta - 1/k < b_k \leq \beta$. Then
+              \[
+                  a_k + b_k > \alpha + \beta - 2/k \longrightarrow \alpha + \beta.
+              \]
+              Consequently, $\alpha + \beta$ is \emph{the least} upper bound, so $\sup S = \alpha + \beta$.
+    \end{enumerate}
+
+    \medskip
+    \textbf{(ii) Infimum of sums.} Assume $A$ and $B$ are bounded below, so $\gamma, \delta \in \mathbb{R}$.
+    \begin{enumerate}
+        \item \emph{Lower bound.} For any $a \in A$ and $b \in B$, we have $a \geq \gamma$ and $b \geq \delta$, hence $a + b \geq \gamma + \delta$. Thus $\gamma + \delta$ is a lower bound of $S$, giving $\inf S \geq \gamma + \delta$.
+        \item \emph{Approaching the bound.} For each $k \geq 1$, choose $a_k \in A$ with $\gamma \leq a_k < \gamma + 1/k$ and $b_k \in B$ with $\delta \leq b_k < \delta + 1/k$. Then
+              \[
+                  a_k + b_k < \gamma + \delta + 2/k \longrightarrow \gamma + \delta.
+              \]
+              Therefore, $\gamma + \delta$ is the \emph{greatest} lower bound, and $\inf S = \gamma + \delta$.
+    \end{enumerate}
+\end{proof}
+
 \end{document}
