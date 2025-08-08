@@ -5,4 +5,4 @@ This repository is going to store the Q&A pair for the book Convexity and Optimi
 Possibly I will solve one exercise per day. Good luck and have fun here :).
 
 # As for when I will return?
-I am currently focused on preparing my submission for AAAI 2025, finalizing the paper and conducting experiments; I will resume progress on this project and provide updates once my AAAI commitments are completed.
+I am currently focused on preparing my submission for ICLR 2026, finalizing the paper and conducting experiments; I will resume progress on this project and provide updates once my ICLR commitments are completed.
